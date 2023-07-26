@@ -1,0 +1,8 @@
+.wrapped-container{
+    background-color: #212121;
+    border-radius: 25px;
+    color: #ffffff;
+    height: 100vh;
+    border: 2px solid #ffffff;
+    margin: 1rem 1rem 1rem 1rem
+}
