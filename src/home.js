@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import './home.css'
+import './app.css'
 import axios from 'axios';
 import Sidebar from "./sidebar.js";
 import Wrapped from "./wrapped.js";
@@ -9,7 +9,7 @@ import Wrapped from "./wrapped.js";
 
 export default function Home() {
     return (
-        <div class="home-page">
+        <div className="home-page">
             <div><Sidebar/></div>
             <div><Wrapped/></div>
         </div>
