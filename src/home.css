@@ -10,12 +10,11 @@
     color: #ffffff;
     display: grid;
     grid-template-columns: 1.2fr 4fr;
-    gap: 20px;
   }
 .home-container{
     background-color: #212121;
     border-radius: 25px;
     color: #ffffff;
     height: 100vh;
-    border: 5px solid #ffffff;
+    border: 2px solid #ffffff;
 }
