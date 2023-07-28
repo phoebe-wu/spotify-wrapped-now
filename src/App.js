@@ -22,7 +22,7 @@ function App() {
     <div className="login-page">
         {!token ?
           <div> <Login/> </div>: 
-          <div> <Home/> </div>
+          <div> <Home setToken = {setToken}/> </div>
         }
     </div>
   );

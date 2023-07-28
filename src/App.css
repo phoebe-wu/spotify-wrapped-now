@@ -53,12 +53,12 @@ button{
   border-radius: 15px;
   color: #fefeff;
   height: 90vh;
-  border: 2px solid #fefeff;
+  /* border: 2px solid #fefeff; */
   margin: 0.5rem;
   padding:2rem;
 }
 .sidebar{
-  border: 2px solid #83c117;
+  /* border: 2px solid #83c117; */
 }
 .sidebar-btn {
   padding: 15px 0px;
@@ -70,7 +70,7 @@ button{
   cursor: pointer;
 }
 .wrapped{
-  border: 2px solid #cc5ca5;
+  /* border: 2px solid #cc5ca5; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 5fr;
