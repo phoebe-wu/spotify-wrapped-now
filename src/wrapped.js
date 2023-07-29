@@ -4,7 +4,7 @@ import axios from 'axios';
 import Greeting from './greeting.js';
 
 export default function Wrapped() {
-    const timespans = [{label: '1 month', code: 'short_term'}, {label: '6 months', code: 'medium_term'}, {label: 'all-time', code: 'long_term'} ]
+    const timespans = [{label: '1 Month', code: 'short_term'}, {label: '6 Months', code: 'medium_term'}, {label: 'All-Time', code: 'long_term'} ]
     const [active, setActive] = useState(timespans[0].code);
     const token = window.localStorage.getItem("token");
     const json = {
@@ -45,7 +45,7 @@ export default function Wrapped() {
 
         function renderTopSong(song) {
             return (
-                <div className="top-item">
+                <div className="top-item" key={song.id}>
                     <div className="top-item-img-container">
                         <img src={song.album.images[0].url}/>
                     </div>
@@ -62,7 +62,7 @@ export default function Wrapped() {
         }
         function renderTopArtist(artist) {
             return (
-                <div className="top-item">
+                <div className="top-item" key={artist.id}>
                     <div className="top-item-img-container">
                         <img src={artist.images[0].url}/>
                     </div>

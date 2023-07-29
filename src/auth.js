@@ -8,7 +8,7 @@ export const LOGIN_URL= `${AUTH_URL}?client_id=${CLIENTID}&redirect_uri=${REDIRE
 export default function Login() {
     return (
         <div className="login-page">
-        <div className="login-msg"> Discover your Spotify Wrapped Now </div>
+        <div className="login-msg"> Discover your Spotify Wrapped, Now </div>
         <a href={LOGIN_URL}>
           <div className="login-btn">LOGIN WITH SPOTIFY</div>
         </a>

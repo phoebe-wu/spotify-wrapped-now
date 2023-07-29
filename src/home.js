@@ -11,9 +11,9 @@ export default function Home({setToken}) {
 
         return (
         <div className = 'home-container sidebar'>
-            <h1 className="wrapped-header">Wrapped Now!</h1>
-              <button className="sidebar-btn">Home</button>
-              <button className="sidebar-btn" onClick={logout}>Logout</button>
+            <h2 className="wrapped-now-header">Wrapped Now!</h2>
+            <button className="sidebar-btn">Home</button>
+            <button className="sidebar-btn" onClick={logout}>Logout</button>
         </div>  
         );
     }

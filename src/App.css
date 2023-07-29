@@ -18,7 +18,7 @@ img {
   object-fit:cover;
 }  
 .login-page {
-  background-color: #191414;
+  background-color: #010100;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -31,7 +31,7 @@ img {
   width: 500px;
   padding: 20px 0px;
   text-align: center;
-  background-color: #1DB954;
+  background-color: #1ad660;
   border-radius: 50px;
   color: #1f1f1f;
   font-size: larger;
@@ -41,15 +41,16 @@ img {
   width: 500px;
   padding: 15px 0px;
   text-align: center;
-  background-color: #1DB954;
+  background-color: #1ad660;
   border-radius: 50px;
-  color: #ffffff;
+  color: #fefeff;
   font-weight: 600;
   margin-top: 2%;
 }
-.wrapped-header{
+.wrapped-now-header{
   color: #1ad660;
   font-size: xxx-large;
+  margin-bottom: 2rem;
 }
 .home-page {
   background-color: #010100;
@@ -69,19 +70,23 @@ img {
 .sidebar{
 }
 .sidebar-btn {
-  background-color: #010100;
+  background-color: #121313;
   color:#7e7e7f;
   width:100%;
   padding: 15px 0px;
-  text-align: center;
-  font-weight: 600;
+  text-align: left;
+  font-size: larger;
+  font-weight: 700;
   margin-top: 2%;
-  border: 2px solid #fefeff;
+  /* border: 2px solid #fefeff; */
   cursor: pointer;
   transition: ease color 200ms;
   &:hover {
     color: #fefeff;
   }
+}
+.sidebar-selected {
+  color:#fefeff;
 }
 .wrapped{
   display: grid;
@@ -104,11 +109,11 @@ img {
   margin: 10px;
   transition: ease background-color 200ms;
   &:hover {
-    background-color: #25E46B;
+    background-color: #1cde62;
   }
 }
 .timespan-selected {
-  background-color: #25E46B;
+  background-color: #1cde62;
   color:#fefeff;
 }
 .top-items{
@@ -134,7 +139,7 @@ img {
 .top-item-info{
   color:#7e7e7f;
   font-size: large;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 0.3rem;
   &:hover {
     color: #fefeff;
