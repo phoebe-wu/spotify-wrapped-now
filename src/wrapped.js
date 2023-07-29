@@ -23,25 +23,68 @@ export default function Wrapped() {
     )}
 
     function TopItems({type}) {
-        const [topItems, setTopItems] = useState([]);
-        const getTopArtists = async (e) => {
-            const {data} = await axios.get(`https://api.spotify.com/v1/me/top/${type}?limit=5`, json)
-            console.log({data});
+        const [TopItems, setTopItems] = useState([]);
+        const getTopItems = async (e) => {
+            try {
+                const res = await axios.get(`https://api.spotify.com/v1/me/top/${type}?time_range=${active}&limit=5`, json)
+                setTopItems(res.data.items)
+                console.log({TopItems})
+            } catch (err) {
+                console.log(err)
+                window.location.path = "/"
+            }
         }
         useEffect(() => {
             console.log({active})
-            getTopArtists()
+            getTopItems()
         },[active])
-        
+
+        useEffect(() => {
+          
+        },[TopItems])
+
+        function renderTopSong(song) {
+            return (
+                <div className="top-item">
+                    <div className="top-item-img-container">
+                        <img src={song.album.images[0].url}/>
+                    </div>
+                    <div className = "top-item-info-container">
+                        <a href={song.external_urls.spotify} className="top-item-info">
+                            <div className="top-item-info">{song.name}</div>
+                        </a>
+                        <a href={song.artists[0].external_urls.spotify} className="top-item-info">
+                            <div>{song.album.artists[0].name}</div>
+                        </a>
+                    </div>
+                </div>
+            )
+        }
+        function renderTopArtist(artist) {
+            return (
+                <div className="top-item">
+                    <div className="top-item-img-container">
+                        <img src={artist.images[0].url}/>
+                    </div>
+                    <div className="top-item-info-container">
+                        <a href={artist.external_urls.spotify} className="top-item-info">
+                            <div> {artist.name} </div>
+                        </a>
+                    </div>
+                </div>
+            )
+        }
+
       return (
         <div className='top-items'>
-            <h2>Your Top 5 {type} {active}</h2>
+            <h2 className="top-items-header">Your Top 5 {type}</h2>
+            {type === "artists" ? TopItems.map((i) => (renderTopArtist(i))) : TopItems.map((i) => (renderTopSong(i)))}
         </div>
       )
     }
 
     return <div className = 'home-container wrapped'>
-        <h1 className= 'header grid-col-span-2'><Greeting/></h1>
+        <h1 className= 'greeting grid-col-span-2'><Greeting/></h1>
         <div className = 'grid-col-span-2'><TimespanToggleGroup/></div>
         <div><TopItems type='artists' range={active}/></div>
         <div><TopItems type='tracks' range={active}/></div>

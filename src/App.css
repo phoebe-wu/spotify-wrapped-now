@@ -6,11 +6,17 @@ a {
   text-decoration: none;
 }
 h1{
-  color:#fefeff
+  color:#fefeff;
 }
 button{
   font-family: inherit;
+  border:0;
 }
+img {  
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}  
 .login-page {
   background-color: #191414;
   height: 100vh;
@@ -41,6 +47,10 @@ button{
   font-weight: 600;
   margin-top: 2%;
 }
+.wrapped-header{
+  color: #1ad660;
+  font-size: xxx-large;
+}
 .home-page {
   background-color: #010100;
   display: grid;
@@ -53,27 +63,30 @@ button{
   border-radius: 15px;
   color: #fefeff;
   height: 90vh;
-  /* border: 2px solid #fefeff; */
   margin: 0.5rem;
   padding:2rem;
 }
 .sidebar{
-  /* border: 2px solid #83c117; */
 }
 .sidebar-btn {
+  background-color: #010100;
+  color:#7e7e7f;
+  width:100%;
   padding: 15px 0px;
   text-align: center;
-  color: #ffffff;
   font-weight: 600;
   margin-top: 2%;
   border: 2px solid #fefeff;
   cursor: pointer;
+  transition: ease color 200ms;
+  &:hover {
+    color: #fefeff;
+  }
 }
 .wrapped{
-  /* border: 2px solid #cc5ca5; */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 5fr;
+  grid-template-rows: 0.5fr 0.5fr 6fr;
   gap: 0.5rem;
   align-content: start;
 }
@@ -84,12 +97,12 @@ button{
   background-color: #1ad660;
   color: #121313;
   outline:0;
-  font-size: large;
-  padding: 1.5rem 2.5rem;
+  font-size: medium;
+  padding: 1rem 1rem;
   border-radius:50px;
   cursor:pointer;
   margin: 10px;
-  transition: ease background-color 250ms;
+  transition: ease background-color 200ms;
   &:hover {
     background-color: #25E46B;
   }
@@ -100,7 +113,40 @@ button{
 }
 .top-items{
   border-radius: 15px;
-  height: 100px;
+  height: 92%;
   background-color: #282929;
-  border: 2px solid #fefeff;
+  padding: 1.5rem;
+}
+.top-items-header{
+  margin-bottom: 1rem;
+}
+.top-item{
+  width: 100%;
+  height: 115px;
+  display:grid;
+  grid-template-columns: 115px 2fr;
+}
+.top-item-info-container{
+  margin-top: 2rem;
+  margin-left: 1rem;
+  height: 115px;
+}
+.top-item-info{
+  color:#7e7e7f;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  &:hover {
+    color: #fefeff;
+  }
+}
+.top-item-img-container {
+  height: 115px;
+  width: 115px;
+  overflow:hidden;
+}
+.top-item-img img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
 }

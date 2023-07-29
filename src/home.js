@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import {BrowserRouter} from "react-router-dom";
 import './app.css'
 import Wrapped from './wrapped.js'
 
@@ -12,9 +11,9 @@ export default function Home({setToken}) {
 
         return (
         <div className = 'home-container sidebar'>
-            <h1>WRAPPED NOW</h1>
-              <div className="sidebar-btn">Home</div>
-              <div className="sidebar-btn" onClick={logout}>Logout</div>
+            <h1 className="wrapped-header">Wrapped Now!</h1>
+              <button className="sidebar-btn">Home</button>
+              <button className="sidebar-btn" onClick={logout}>Logout</button>
         </div>  
         );
     }
