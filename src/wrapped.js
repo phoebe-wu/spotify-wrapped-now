@@ -53,18 +53,24 @@ export default function Wrapped() {
                         <a href={song.external_urls.spotify} className="top-item-info">
                             <div className="top-item-info">{song.name}</div>
                         </a>
-                        <a href={song.artists[0].external_urls.spotify} className="top-item-info">
-                            <div>{song.album.artists[0].name}</div>
-                        </a>
+                        <div className="top-item-info">
+                            {song.artists.map((artist) => (
+                            <a href={artist.external_urls.spotify} className="top-item-info"><span>{artist.name + " "}</span></a>
+                            ))}
+                        </div>
+                        
                     </div>
                 </div>
             )
+        }
+        function renderArtist(artist_list) {
+            
         }
         function renderTopArtist(artist) {
             return (
                 <div className="top-item" key={artist.id}>
                     <div className="top-item-img-container">
-                        <img src={artist.images[0].url}/>
+                        <img className="top-item-img" src={artist.images[0].url}/>
                     </div>
                     <div className="top-item-info-container">
                         <a href={artist.external_urls.spotify} className="top-item-info">

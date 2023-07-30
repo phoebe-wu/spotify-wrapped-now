@@ -142,14 +142,16 @@ img {
   }
 }
 .top-item-info-container{
-  margin-top: 2rem;
   height: 115px;
+  display: grid;
+  align-content: center;
+  line-height: 1.6rem;
 }
 .top-item-info{
   color:#7e7e7f;
   font-size: large;
   font-weight: 600;
-  margin-bottom: 0.3rem;
+  cursor:pointer;
   &:hover {
     color: #fefeff;
   }
