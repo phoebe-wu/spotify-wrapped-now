@@ -4,7 +4,7 @@ import axios from 'axios';
 import Greeting from './greeting.js';
 
 export default function Wrapped() {
-    const timespans = [{label: '1 Month', code: 'short_term'}, {label: '6 Months', code: 'medium_term'}, {label: 'All-Time', code: 'long_term'} ]
+    const timespans = [{label: '1 Month', code: 'short_term'}, {label: '6 Months', code: 'medium_term'}, {label: 'All-Time', code: 'long_term'}]
     const [active, setActive] = useState(timespans[0].code);
     const token = window.localStorage.getItem("token");
     const json = {
@@ -43,9 +43,10 @@ export default function Wrapped() {
           
         },[TopItems])
 
-        function renderTopSong(song) {
+        function renderTopSong(song, index) {
             return (
                 <div className="top-item" key={song.id}>
+                    <div className="top-item-rank"> {index + 1} </div>
                     <div className="top-item-img-container">
                         <img src={song.album.images[0].url}/>
                     </div>
@@ -63,12 +64,10 @@ export default function Wrapped() {
                 </div>
             )
         }
-        function renderArtist(artist_list) {
-            
-        }
-        function renderTopArtist(artist) {
+        function renderTopArtist(artist, index) {
             return (
                 <div className="top-item" key={artist.id}>
+                    <div className="top-item-rank"> {index + 1} </div>
                     <div className="top-item-img-container">
                         <img className="top-item-img" src={artist.images[0].url}/>
                     </div>
@@ -84,7 +83,7 @@ export default function Wrapped() {
       return (
         <div className='top-items'>
             <h2 className="top-items-header">Your Top 5 {type}</h2>
-            {type === "artists" ? TopItems.map((i) => (renderTopArtist(i))) : TopItems.map((i) => (renderTopSong(i)))}
+            {type === "artists" ? TopItems.map((item, index) => (renderTopArtist(item, index))) : TopItems.map((item, index) => (renderTopSong(item, index)))}
         </div>
       )
     }
