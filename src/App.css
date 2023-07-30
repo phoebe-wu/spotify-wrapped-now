@@ -91,7 +91,12 @@ img {
   transition: ease color 250ms;
   &:hover {
     color: #fefeff;
+    font-weight:700;
   }
+}
+.sidebar-selected{
+  color:#fefeff;
+  font-weight: 700;
 }
 .wrapped{
   display: grid;
@@ -115,6 +120,7 @@ img {
   transition: ease background-color 250ms;
   &:hover {
     background-color: #1cde62;
+    font-weight: 600;
   }
 }
 .timespan-selected {

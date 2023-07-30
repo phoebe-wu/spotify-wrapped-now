@@ -3,7 +3,7 @@ import './app.css';
 import axios from 'axios';
 import Greeting from './greeting.js';
 
-export default function Wrapped() {
+export default function Wrapped({setToken}) {
     const timespans = [{label: '1 Month', code: 'short_term'}, {label: '6 Months', code: 'medium_term'}, {label: 'All-Time', code: 'long_term'}]
     const [active, setActive] = useState(timespans[0].code);
     const token = window.localStorage.getItem("token");
@@ -22,16 +22,19 @@ export default function Wrapped() {
         </div>
     )}
 
-    function TopItems({type}) {
+    function TopItems({type}, {setToken}) {
         const [TopItems, setTopItems] = useState([]);
         const getTopItems = async (e) => {
-            try {
-                const res = await axios.get(`https://api.spotify.com/v1/me/top/${type}?time_range=${active}&limit=5`, json)
+            const res = await axios.get(`https://api.spotify.com/v1/me/top/${type}?time_range=${active}&limit=5`, json)
+            if(res.status === 200) {
                 setTopItems(res.data.items)
                 console.log({TopItems})
-            } catch (err) {
-                console.log(err)
-                window.location.path = "/"
+            } else if (res.status === 401) {
+                setToken("");
+                window.localStorage.setItem("token", "");
+            } else {
+                console.log(res.responseText)
+                alert(this.responseText)
             }
         }
         useEffect(() => {
@@ -48,7 +51,7 @@ export default function Wrapped() {
                 <div className="top-item" key={song.id}>
                     <div className="top-item-rank"> {index + 1} </div>
                     <div className="top-item-img-container">
-                        <img src={song.album.images[0].url}/>
+                        <img src={song.album.images[0].url} alt=""/>
                     </div>
                     <div className = "top-item-info-container">
                         <a href={song.external_urls.spotify} className="top-item-info">
@@ -56,7 +59,7 @@ export default function Wrapped() {
                         </a>
                         <div className="top-item-info">
                             {song.artists.map((artist) => (
-                            <a href={artist.external_urls.spotify} className="top-item-info"><span>{artist.name + " "}</span></a>
+                            <a key={artist.id} href={artist.external_urls.spotify} className="top-item-info"><span>{artist.name + " "}</span></a>
                             ))}
                         </div>
                         
@@ -69,7 +72,7 @@ export default function Wrapped() {
                 <div className="top-item" key={artist.id}>
                     <div className="top-item-rank"> {index + 1} </div>
                     <div className="top-item-img-container">
-                        <img className="top-item-img" src={artist.images[0].url}/>
+                        <img className="top-item-img" alt="" src={artist.images[0].url}/>
                     </div>
                     <div className="top-item-info-container">
                         <a href={artist.external_urls.spotify} className="top-item-info">

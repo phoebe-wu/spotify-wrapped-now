@@ -22,8 +22,7 @@ export default function Greeting() {
         }
       }
     axios.get(`https://api.spotify.com/v1/me`, json).then((res) => {
-        setName(!res.data.display_name ? "" : res.data.display_name);
-        console.log(name)
+        setName(!res.data.display_name ? "" : res.data.display_name)
     })   
     return (
         <h2>{!name ? `${greeting}` : `${greeting}, ${name}`}</h2>

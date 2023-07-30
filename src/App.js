@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './app.css';
-import axios from 'axios';
 import Login from './auth.js';
 import Home from "./home.js";
 
 function App() {
   const [token, setToken] = useState("");
   useEffect(() => {
+    console.log(window.location)
     const hash = window.location.hash
     let token = window.localStorage.getItem("token");
 
@@ -19,7 +20,7 @@ function App() {
   }, [])
   
   return (
-    <div className="login-page">
+    <div >
         {!token ?
           <div> <Login/> </div>: 
           <div> <Home setToken = {setToken}/> </div>

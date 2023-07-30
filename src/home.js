@@ -8,12 +8,11 @@ export default function Home({setToken}) {
             setToken("");
             window.localStorage.setItem("token", "");
         }
-
         return (
         <div className = 'home-container sidebar'>
             <h2 className="wrapped-now-header">Wrapped Now!</h2>
-            <button className="sidebar-btn-container sidebar-btn">
-                <GoHome className="icon" size={30}/>
+            <button className="sidebar-btn-container sidebar-btn sidebar-selected">
+                <GoHomeFill className="icon" size={30}/>
                 <span>Home</span>
             </button>
             <button className="sidebar-btn-container sidebar-btn" onClick={logout}>
@@ -27,7 +26,7 @@ export default function Home({setToken}) {
     return (
         <div className="home-page">
             <div><Sidebar setToken = {setToken}/></div> 
-            <div><Wrapped/></div>
+            <div><Wrapped setToken = {setToken}/></div>
         </div>
     )
 }
