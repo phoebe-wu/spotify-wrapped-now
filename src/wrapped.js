@@ -22,7 +22,7 @@ export default function Wrapped({setToken}) {
         </div>
     )}
 
-    function TopItems({type}) {
+    function TopItems({type, setToken}) {
         const [TopItems, setTopItems] = useState([]);
         const getTopItems = async (e) => {
             try {
@@ -30,7 +30,8 @@ export default function Wrapped({setToken}) {
                 setTopItems(res.data.items)
                 console.log({TopItems})
             } catch {
-                //TODO: handle 401 error case
+                setToken("");
+                window.localStorage.setItem("token", "");
             }
         }
         useEffect(() => {
@@ -90,7 +91,7 @@ export default function Wrapped({setToken}) {
     return <div className = 'home-container wrapped'>
         <h1 className= 'greeting grid-col-span-2'><Greeting/></h1>
         <div className = 'grid-col-span-2'><TimespanToggleGroup/></div>
-        <div><TopItems type='artists'/></div>
-        <div><TopItems type='tracks'/></div>
+        <div><TopItems type='artists' setToken = {setToken}/></div>
+        <div><TopItems type='tracks' setToken = {setToken}/></div>
     </div>  
 }
