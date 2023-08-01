@@ -1,6 +1,7 @@
-import { GoHome, GoHomeFill ,GoSignOut} from "react-icons/go";
+import { GoHomeFill ,GoSignOut } from "react-icons/go";
 import { Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Bars } from 'react-loader-spinner';
 import './app.css'
 import Wrapped from './wrapped.js'
 
@@ -44,7 +45,9 @@ export default function Home() {
 
     function LoadingScreen() {
         return(
-            <div> LOADING...</div>
+            <div className="login-page">
+                <Bars height="80" width="80" color="#1ad660" ariaLabel="bars-loading" visible={true} />
+            </div>
         )
     }
 
