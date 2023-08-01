@@ -3,7 +3,7 @@ import './app.css';
 import axios from 'axios';
 import Greeting from './greeting.js';
 
-export default function Wrapped() {
+export default function Wrapped({setToken}) {
     const timespans = [{label: '1 Month', code: 'short_term'}, {label: '6 Months', code: 'medium_term'}, {label: 'All-Time', code: 'long_term'}]
     const [active, setActive] = useState(timespans[0].code);
     const token = window.localStorage.getItem("token");
@@ -30,12 +30,12 @@ export default function Wrapped() {
                 setTopItems(res.data.items)
                 console.log({TopItems})
             } catch {
-                setTopItems([]);
+                //TODO: handle 401 error case
             }
         }
         useEffect(() => {
             console.log({active})
-            getTopItems()
+            getTopItems({setToken})
         },[active])
 
         useEffect(() => {
@@ -90,7 +90,7 @@ export default function Wrapped() {
     return <div className = 'home-container wrapped'>
         <h1 className= 'greeting grid-col-span-2'><Greeting/></h1>
         <div className = 'grid-col-span-2'><TimespanToggleGroup/></div>
-        <div><TopItems type='artists' range={active}/></div>
-        <div><TopItems type='tracks' range={active}/></div>
+        <div><TopItems type='artists'/></div>
+        <div><TopItems type='tracks'/></div>
     </div>  
 }

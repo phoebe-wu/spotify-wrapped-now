@@ -37,6 +37,10 @@ img {
   font-size: larger;
   font-weight: 600;
 }
+.login-subtext{
+  color: #fefeff;
+  margin-top: 1rem;
+}
 .login-btn {
   width: 500px;
   padding: 15px 0px;
