@@ -3,7 +3,7 @@ import './app.css';
 import axios from 'axios';
 import Greeting from './greeting.js';
 
-export default function Wrapped({setToken}) {
+export default function Wrapped() {
     const timespans = [{label: '1 Month', code: 'short_term'}, {label: '6 Months', code: 'medium_term'}, {label: 'All-Time', code: 'long_term'}]
     const [active, setActive] = useState(timespans[0].code);
     const token = window.localStorage.getItem("token");
@@ -22,19 +22,15 @@ export default function Wrapped({setToken}) {
         </div>
     )}
 
-    function TopItems({type}, {setToken}) {
+    function TopItems({type}) {
         const [TopItems, setTopItems] = useState([]);
         const getTopItems = async (e) => {
-            const res = await axios.get(`https://api.spotify.com/v1/me/top/${type}?time_range=${active}&limit=5`, json)
-            if(res.status === 200) {
+            try {
+                const res = await axios.get(`https://api.spotify.com/v1/me/top/${type}?time_range=${active}&limit=5`, json)
                 setTopItems(res.data.items)
                 console.log({TopItems})
-            } else if (res.status === 401) {
-                setToken("");
-                window.localStorage.setItem("token", "");
-            } else {
-                console.log(res.responseText)
-                alert(this.responseText)
+            } catch {
+                setTopItems([]);
             }
         }
         useEffect(() => {
